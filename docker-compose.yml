@@ -1,21 +1,8 @@
-# Docker Compose file for Vapor
-#
-# Install Docker on your system to run and test
-# your Vapor app in a production-like environment.
-#
-# Note: This file is intended for testing and does not
-# implement best practices for a production deployment.
-#
-# Learn more: https://docs.docker.com/compose/reference/
-#
-#   Build images: docker compose build
-#      Start app: docker compose up app
-#       Stop all: docker compose down
-#
+version: "3.8"
 
 x-shared_environment: &shared_environment
-  LOG_LEVEL: ${LOG_LEVEL:-debug}
-  
+  LOG_LEVEL: ${LOG_LEVEL}
+
 services:
   app:
     image: hello:latest
@@ -23,7 +10,27 @@ services:
       context: .
     environment:
       <<: *shared_environment
+      DB_HOSTNAME: db
+      DB_PORT: ${POSTGRES_PORT}
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
     ports:
       - '8080:8080'
-    # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
+    depends_on:
+      - db
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+volumes:
+  postgres_data:
