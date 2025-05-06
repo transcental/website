@@ -1,0 +1,25 @@
+#extend("base"):
+    #export("title"):
+        uk transport | challenges
+    #endexport
+
+    #export("content"):
+        <h1>UK Public Transport Challenge</h1>
+
+        <h2>public... transport?</h2>
+        <p>Unlike some other countries <em>(cough, cough, 🇺🇸)</em> the UK has good public transport, with a National Rail system that goes around the country, and several local metro systems. Trains on the rail network are currently operated by Train Operating Companies (TOCs). These TOCs are private companies and are in the process of being phased out as we publicise our rail network under Great British Railways (GBR).</p>
+        <h2>so.... what actually is the challenge?</h2>
+        <p>Well, given that these TOCs aren't going to be around for long, it'd be fun to ride a train operated by each TOC whilst they're still around. Oh, and for fun I'm also throwing in Open Access Operators and metro/light rail systems in the UK.</p>
+        <hr />
+        <h2>progress</h2>
+        <p>These are all of the operators I'm counting and whether I've done them or not :D</p>
+
+        #for(operator in operators):
+            <div>
+                <img src="#(operator.logo.relative)" alt="logo" />
+                <h3>#(operator.name)</h3>
+                <p>Ridden: #(operator.ridden)</p>
+            </div>
+       #endfor
+    #endexport
+#endextend
