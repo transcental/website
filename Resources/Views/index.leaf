@@ -1,0 +1,14 @@
+#extend("base"):
+    #export("title"):
+        home
+    #endexport
+
+    #export("content"):
+        <h1>👋 hiii</h1>
+        <p>this site is currently a work in progress, but it'll eventually be my new website! here are the pages so far</p>
+        <ul>
+            <li><a href="/challenges">Challenges</a></li>
+            <li><a href="/challenges/uk-transport">UK Transport Challenge</a></li>
+        </li>
+    #endexport
+#endextend
