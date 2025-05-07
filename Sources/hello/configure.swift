@@ -12,7 +12,7 @@ public func configure(_ app: Application) async throws {
     app.databases.use(
         .postgres(
             configuration: .init(
-                hostname: Environment.get("DB_HOST") ?? "localhost",
+                hostname: Environment.get("DB_HOSTNAME") ?? "localhost",
                 port: Environment.get("DB_PORT").flatMap(Int.init(_:)) ?? 5432,
                 username: Environment.get("DB_USER") ?? "postgres",
                 password: Environment.get("DB_PASSWORD") ?? "password",
