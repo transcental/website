@@ -22,7 +22,7 @@ public func configure(_ app: Application) async throws {
         ),
         as: .psql
     )
-    
+        
     app.migrations.add(CreateOperator())
     
     app.views.use(.leaf)
