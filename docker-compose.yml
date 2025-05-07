@@ -20,6 +20,8 @@ services:
     depends_on:
       - db
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+    networks:
+        - website
 
   db:
     image: postgres:15
@@ -31,6 +33,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "${POSTGRES_PORT}:5432"
+    networks:
+        - website
 
 volumes:
   postgres_data:
+
+networks:
+  website:
