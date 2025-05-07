@@ -16,7 +16,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: ${POSTGRES_DB}
     ports:
-      - '8080:8080'
+      - '8081:8080'
     depends_on:
       - db
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
