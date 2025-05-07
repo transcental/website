@@ -20,13 +20,17 @@ final class Operator: Model, Content, @unchecked Sendable {
     @Field(key: "ridden")
     var ridden: Bool
     
+    @Field(key: "operates_trains")
+    var operatesTrains: Bool
+    
     init() {}
     
-    init(id: UUID? = nil, name: String, logo: URL, website: URL, ridden: Bool) {
+    init(id: UUID? = nil, name: String, logo: URL, website: URL, ridden: Bool, operatesTrains: Bool = true) {
         self.id = id
         self.name = name
         self.logo = logo
         self.website = website
         self.ridden = ridden
+        self.operatesTrains = operatesTrains
     }
 }

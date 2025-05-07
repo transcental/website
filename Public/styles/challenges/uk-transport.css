@@ -1,0 +1,61 @@
+section.toc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 20px;
+    padding: 20px;
+    margin: 50px auto;
+    max-width: calc(5 * 200px + 4 * 20px); /* Max 5 cards with gaps */
+    justify-content: center;
+}
+
+.toc-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toc-card:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.toc-img img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.toc-img {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: min-content;
+    padding: 8px;
+}
+
+.toc-content {
+    height: 50%;
+}
+
+
+.toc-card hr {
+    border: 1px solid #ccc;
+    width: 20%;
+}
+
+.toc-card[ridden=true] {
+    background-color: #d4edda;
+}
+
+.toc-card[ridden=false] {
+    background-color: #f8d7da;
+}

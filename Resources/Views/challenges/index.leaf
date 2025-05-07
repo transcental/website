@@ -3,8 +3,24 @@
         challenges
     #endexport
 
+    #export("head"):
+        <link rel="stylesheet" href="/styles/challenges/index.css"/>
+    #endexport
+
     #export("content"):
         <h1>My Challenges</h1>
         <p>Life gets a bit boring sometimes, so I decided to set myself some challenges...</p>
+
+        <hr/>
+        <section class="challenge-list">
+            <a href="challenges/uk-transport" class="challenge-card">
+                <span class="challenge-name">UK Transport Challenge</span>
+                <p>Ride a train operated by each TOC in the UK before they are phased out</p>
+            </a>
+            <a href="challenges/uk-transport" class="challenge-card">
+                <span class="challenge-name">UK Transport Challenge</span>
+                <p>Ride a train operated by each TOC in the UK before they are phased out</p>
+            </a>
+        </section>
     #endexport
 #endextend

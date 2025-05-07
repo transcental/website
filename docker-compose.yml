@@ -1,7 +1,5 @@
 version: "3.8"
 
-x-shared_environment: &shared_environment
-  LOG_LEVEL: ${LOG_LEVEL}
 
 services:
   app:
@@ -9,35 +7,13 @@ services:
     build:
       context: .
     environment:
-      <<: *shared_environment
-      DB_HOSTNAME: db
+      LOG_LEVEL: "info"
+      DB_HOSTNAME: ${POSTGRES_HOSTNAME}
       DB_PORT: ${POSTGRES_PORT}
       DB_USERNAME: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: ${POSTGRES_DB}
     ports:
       - '8081:8080'
-    depends_on:
-      - db
     command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
-    networks:
-        - website
 
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "${POSTGRES_PORT}:5432"
-    networks:
-        - website
-
-volumes:
-  postgres_data:
-
-networks:
-  website:

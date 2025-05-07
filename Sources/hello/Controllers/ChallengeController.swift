@@ -13,7 +13,7 @@ struct ChallengeController: RouteCollection {
     }
     
     func ukTransport(_ req: Request) async throws -> View {
-        let operators = try await Operator.query(on: req.db).all()
+        let operators = try await Operator.query(on: req.db).filter(\.$operatesTrains == true).all()
         
         return try await req.view.render("challenges/uk-transport", ["operators": operators])
     }
