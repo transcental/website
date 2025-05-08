@@ -5,7 +5,7 @@ x-shared_environment: &shared_environment
   LOG_LEVEL: ${LOG_LEVEL:-debug}
   DATABASE_HOST: db
   DATABASE_NAME: postgres
-  DATABASE_USERNAME: postgtres
+  DATABASE_USERNAME: postgres
   DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-password}
   DATABASE_PORT: 4253
   
