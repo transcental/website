@@ -9,14 +9,20 @@ public func configure(_ app: Application) async throws {
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.routes.caseInsensitive = true
     
+    let hostname = Environment.get("DATABASE_HOST") ?? "localhost"
+    let port = Environment.get("DATABASE_PORT").flatMap(Int.init(_:)) ?? 5432
+    let username = Environment.get("DATABASE_USERNAME") ?? "vapor_username"
+    let password = Environment.get("DATABASE_PASSWORD") ?? "vapor_password"
+    let databaseName = Environment.get("DATABASE_NAME") ?? "vapor_database"
+    
     app.databases.use(
         .postgres(
             configuration: .init(
-                hostname: Environment.get("DATABASE_HOST") ?? "localhost",
-                port: Environment.get("DATABASE_PORT").flatMap(Int.init(_:)) ?? .ianaPortNumber,
-                username: Environment.get("DATABASE_USERNAME") ?? "vapor_username",
-                password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password",
-                database: Environment.get("DATABASE_NAME") ?? "vapor_database",
+                hostname: hostname,
+                port: port,
+                username: username,
+                password: password,
+                database: databaseName,
                 tls: .prefer(try .init(configuration: .clientDefault))
             )
         ),
