@@ -12,11 +12,11 @@ public func configure(_ app: Application) async throws {
     app.databases.use(
         .postgres(
             configuration: .init(
-                hostname: Environment.get("DB_HOSTNAME") ?? "localhost",
-                port: Environment.get("DB_PORT").flatMap(Int.init(_:)) ?? 5432,
-                username: Environment.get("DB_USER") ?? "postgres",
-                password: Environment.get("DB_PASSWORD") ?? "password",
-                database: Environment.get("DB_NAME") ?? "postgres",
+                hostname: Environment.get("DATABASE_HOST") ?? "localhost",
+                port: Environment.get("DATABASE_PORT").flatMap(Int.init(_:)) ?? .ianaPortNumber,
+                username: Environment.get("DATABASE_USERNAME") ?? "vapor_username",
+                password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password",
+                database: Environment.get("DATABASE_NAME") ?? "vapor_database",
                 tls: .prefer(try .init(configuration: .clientDefault))
             )
         ),

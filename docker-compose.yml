@@ -1,19 +1,33 @@
-version: "3.8"
+volumes:
+  db_data:
 
-
+x-shared_environment: &shared_environment
+  LOG_LEVEL: ${LOG_LEVEL:-debug}
+  DATABASE_HOST: db
+  DATABASE_NAME: vapor_database
+  DATABASE_USERNAME: vapor_username
+  DATABASE_PASSWORD: vapor_password
+  
 services:
   app:
-    image: hello:latest
+    image: test:latest
     build:
       context: .
     environment:
-      LOG_LEVEL: "info"
-      DB_HOSTNAME: ${POSTGRES_HOSTNAME}
-      DB_PORT: ${POSTGRES_PORT}
-      DB_USERNAME: ${POSTGRES_USER}
-      DB_PASSWORD: ${POSTGRES_PASSWORD}
-      DB_NAME: ${POSTGRES_DB}
+      <<: *shared_environment
+    depends_on:
+      - db
     ports:
       - '8081:8080'
-    command: ["serve", "--auto-migrate", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
-
+    command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080", "--auto-migrate"]
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: vapor_username
+      POSTGRES_PASSWORD: vapor_password
+      POSTGRES_DB: vapor_database
+    ports:
+      - '5432:5432'
