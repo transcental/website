@@ -10,7 +10,6 @@ section.toc-list {
 }
 
 .toc-card {
-    background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -25,12 +24,13 @@ section.toc-list {
     background-color: #e0e0e0;
     cursor: pointer;
     transform: scale(1.02);
+    text-decoration: none;
 }
 
 .toc-img img {
     max-width: 100%;
+    max-height: 100%;
     height: auto;
-    margin-bottom: 10px;
 }
 
 .toc-img {
@@ -42,8 +42,24 @@ section.toc-list {
     padding: 8px;
 }
 
-.toc-content {
-    height: 50%;
+.toc-info {
+    height: calc(50% - 16px);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+span.toc-name {
+    font-weight: bold;
+    color: #333;
+}
+
+span.toc-status {
+    flex-shrink: 0;
+    font-size: 0.8em;
+    color: #555;
+    margin-top: auto;
+    margin-bottom: 8px;
 }
 
 

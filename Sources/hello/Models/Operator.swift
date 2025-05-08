@@ -23,14 +23,18 @@ final class Operator: Model, Content, @unchecked Sendable {
     @Field(key: "operates_trains")
     var operatesTrains: Bool
     
+    @OptionalField(key: "date_ridden")
+    var dateRidden: Date?
+    
     init() {}
     
-    init(id: UUID? = nil, name: String, logo: URL, website: URL, ridden: Bool, operatesTrains: Bool = true) {
+    init(id: UUID? = nil, name: String, logo: URL, website: URL, ridden: Bool, operatesTrains: Bool = true, dateRidden: Date? = nil) {
         self.id = id
         self.name = name
         self.logo = logo
         self.website = website
         self.ridden = ridden
         self.operatesTrains = operatesTrains
+        self.dateRidden = dateRidden
     }
 }

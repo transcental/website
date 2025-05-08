@@ -31,6 +31,7 @@ public func configure(_ app: Application) async throws {
         
     app.migrations.add(CreateOperator())
     app.migrations.add(AddOperatesTrainsToOperator())
+    app.migrations.add(AddDateRiddenToOperator())
     
     app.views.use(.leaf)
     

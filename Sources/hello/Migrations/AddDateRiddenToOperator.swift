@@ -1,13 +1,13 @@
 import Fluent
 
-struct AddOperatesTrainsToOperator: AsyncMigration {
+struct AddDateRiddenToOperator: AsyncMigration {
     func prepare(on database: any Database) async throws {
         try await database.schema("operators")
-            .field("operates_trains", .bool, .required, .sql(.default(true)))
+            .field("date_ridden", .date)
             .update()
     }
     
     func revert(on database: any Database) async throws {
-        try await database.schema("operators").deleteField("operates_trains")
+        try await database.schema("operators").deleteField("date_ridden")
     }
 }

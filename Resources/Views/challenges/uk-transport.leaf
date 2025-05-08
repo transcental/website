@@ -26,6 +26,7 @@
                     <hr/>
                     <div class="toc-info">
                         <span class="toc-name">#(operator.name)</span>
+                        <span class="toc-status">#if(operator.ridden):ridden on #date(operator.dateRidden, "dd/MM/YY")#endif</span>
                     </div>
                 </a>
            #endfor
