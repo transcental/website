@@ -13,13 +13,13 @@
 
         <hr/>
         <section class="challenge-list">
-            <a href="challenges/uk-transport" class="challenge-card">
+            <a href="challenges/uk-operators" class="challenge-card">
                 <span class="challenge-name">UK Transport Challenge</span>
                 <p>Ride a train operated by each TOC in the UK before they are phased out</p>
             </a>
-            <a href="challenges/uk-transport" class="challenge-card">
-                <span class="challenge-name">UK Transport Challenge</span>
-                <p>Ride a train operated by each TOC in the UK before they are phased out</p>
+            <a href="challenges/uk-metro" class="challenge-card">
+                <span class="challenge-name">UK Metro Challenge</span>
+                <p>(Coming soon) Ride all tram/metro systems in the UK</p>
             </a>
         </section>
     #endexport
