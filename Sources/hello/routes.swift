@@ -6,4 +6,5 @@ func routes(_ app: Application) throws {
     }
 
     try app.register(collection: ChallengeController())
+    try app.register(collection: AdminController())
 }

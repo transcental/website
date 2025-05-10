@@ -6,6 +6,10 @@ import Vapor
 
 // configures your application
 public func configure(_ app: Application) async throws {
+    // Configure sessions
+    app.sessions.use(.memory)
+    app.middleware.use(app.sessions.middleware)
+    
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.routes.caseInsensitive = true
     
@@ -32,6 +36,7 @@ public func configure(_ app: Application) async throws {
     app.migrations.add(CreateOperator())
     app.migrations.add(AddOperatesTrainsToOperator())
     app.migrations.add(AddDateRiddenToOperator())
+    app.migrations.add(CreateUser())
     
     app.views.use(.leaf)
     
