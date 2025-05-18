@@ -1,14 +1,25 @@
 #extend("base"):
     #export("title"):
-        challenges
+        admin
     #endexport
 
     #export("head"):
         <link rel="stylesheet" href="/styles/admin/index.css"/>
     #endexport
+    #export("description"):
+        admin page for transcental.dev
+    #endexport
 
     #export("content"):
         <h1>Admin Page</h1>
         <p>Oh hey, you're logged in!</p>
+
+        <hr/>
+
+        <h2>Manage challenges</h2>
+        <div class="challenge-list">
+            <a class="challenge-card" href="/admin/challenges/uk-operators">Manage UK Operators</a>
+            <a class="challenge-card" href="/admin/challenges/uk-metro">Manage UK Metro</a>
+        </div>
     #endexport
 #endextend

@@ -1,12 +1,12 @@
 #extend("base"):
     #export("title"):
-        uk transport | challenges
+        (admin) uk transport | challenges
     #endexport
     #export("head"):
         <link rel="stylesheet" href="/styles/challenges/uk-transport.css"/>
     #endexport
     #export("description"):
-        i want to ride a train operated by each TOC in the UK before they are phased out. this is my progress so far!
+        toc challenge admin page
     #endexport
 
     #export("content"):
@@ -32,7 +32,8 @@
                         <span class="toc-status">#if(operator.ridden):ridden on #date(operator.dateRidden, "dd/MM/YY")#endif</span>
                     </div>
                 </a>
-           #endfor
-       </section>
+            #endfor
+        </section>
     #endexport
 #endextend
+

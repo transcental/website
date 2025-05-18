@@ -6,6 +6,9 @@
     #export("head"):
         <link rel="stylesheet" href="/styles/challenges/index.css"/>
     #endexport
+    #export("description"):
+        hi! i'm doing some challenges to make my life a bit more interesting. this is a list of the challenges i'm doing and my progress so far!
+    #endexport
 
     #export("content"):
         <h1>My Challenges</h1>

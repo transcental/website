@@ -2,6 +2,9 @@
     #export("title"):
         home
     #endexport
+    #export("description"):
+        hi, i'm amber and this is my website! it's a small little place on the web all about.... me!
+    #endexport
 
     #export("content"):
         <h1>👋 hiii</h1>

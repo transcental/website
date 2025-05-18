@@ -9,7 +9,9 @@ struct AdminController: RouteCollection {
         
         let protected = admin.grouped(SessionAuthMiddleware())
         protected.get(use: index)
-        protected.get("uk-transport", use: ukTransport)
+        
+        protected.get("challenges/uk-operators", use: ukOperators)
+        protected.post("api/challenges/add-operator", use: addOperator)
     }
     
     func loginPage(_ req: Request) async throws -> View {
@@ -47,17 +49,41 @@ struct AdminController: RouteCollection {
         return try await req.view.render("admin/index")
     }
     
-    func ukTransport(_ req: Request) async throws -> View {
+    func ukOperators(_ req: Request) async throws -> View {
         let operators = try await Operator.query(on: req.db).filter(\.$operatesTrains == true).all()
         
         return try await req.view
             .render(
-                "admin/uk-transport",
+                "admin/challenges/uk-operators",
                 ["operators": operators.sorted(by: { $0.name < $1.name })]
             )
     }
     
-    
+    func addOperator(_ req: Request) async throws -> Response {
+        struct OperatorData: Content {
+            let name: String
+            let logo: URL
+            let website: URL
+            let ridden: Bool
+            let dateRidden: Date?
+            let operatesTrains: Bool
+        }
+        
+        let operatorData = try req.content.decode(OperatorData.self)
+        
+        let newOperator = Operator(
+            name: operatorData.name,
+            logo: operatorData.logo,
+            website: operatorData.website,
+            ridden: operatorData.ridden,
+            operatesTrains: operatorData.operatesTrains,
+            dateRidden: operatorData.dateRidden
+        )
+        
+        try await newOperator.save(on: req.db)
+        
+        return req.redirect(to: "/challenges/uk-operators")
+    }
 }
 
 struct SessionAuthMiddleware: AsyncMiddleware {

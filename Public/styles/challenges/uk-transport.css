@@ -62,12 +62,6 @@ span.toc-status {
     margin-bottom: 8px;
 }
 
-
-.toc-card hr {
-    border: 1px solid #ccc;
-    width: 20%;
-}
-
 .toc-card[ridden=true] {
     background-color: #d4edda;
 }

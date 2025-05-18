@@ -1,25 +1,33 @@
-body {
-    background-color: #f8f9fa;
+p {
+    text-align: center;
 }
 
-.container {
-    margin-top: 50px;
-}
-
-.card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.card-body {
+div.challenge-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 20px;
     padding: 20px;
+    margin: 50px auto;
+    max-width: calc(5 * 200px + 4 * 20px); /* Max 5 cards with gaps */
+    justify-content: center;
 }
 
-.form-label {
-    font-weight: 600;
+a.challenge-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    max-width: 500px;
 }
 
+a.challenge-card:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transform: scale(1.02);
+}

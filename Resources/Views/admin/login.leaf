@@ -1,10 +1,15 @@
 #extend("base"):
-#export("title"):
-    login
-#endexport
-#export("head"):
-    <link rel="stylesheet" href="/styles/admin/login.css">
-#endexport
+    #export("title"):
+        login
+    #endexport
+
+    #export("head"):
+        <link rel="stylesheet" href="/styles/admin/login.css">
+    #endexport
+    #export("description"):
+        secret login page 👀
+    #endexport
+
     #export("content"):
         <h1>login</h1>
         
